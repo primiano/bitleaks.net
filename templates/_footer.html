@@ -1,0 +1,37 @@
+    </div>
+
+    <aside id="bar">
+      <div id="header">
+        <a href="/" title="BitLeaks - Home">
+          <img src="{{ '/static/images/logo.png' | cachekey }}" alt="BitLeaks">
+        </a>
+        <div id="tagline">{% include 'templates/_tagline.html' %}</div>
+      </div>
+
+      <header>About</header>
+      <img id="profile_picture" src="{{ '/static/images/avatar.png' | cachekey }}" alt="Profile picture">
+      <p>I am Primiano,
+      a Chrome developer in the day and a DIY fanatic hacking around in the night. </p>
+      <p>This is my blog and is a random assortment of things that I like, mostly coding, OS internals, electronics and Git.</p>
+      <ul id="links">
+        <li class="home"><a href="https://www.primianotucci.com/">www.primianotucci.com</a></li>
+        <li class="github"><a href="https://github.com/primiano">github.com/primiano</a></li>
+        <li class="photography"><a href="http://www.tucci.photography/">www.tucci.photography</a></li>
+        <li class="email"><a href="mailto:&#112;&#114;&#105;&#109;&#105;&#097;&#110;&#111;&#064;&#098;&#105;&#116;&#108;&#101;&#097;&#107;&#115;&#046;&#110;&#101;&#116;">&#112;&#114;&#105;&#109;&#105;&#097;&#110;&#111;&#064;&#098;&#105;&#116;&#108;&#101;&#097;&#107;&#115;&#046;&#110;&#101;&#116;</a> [<a href="https://pgp.mit.edu/pks/lookup?op=get&search=0x23A345501A1A5397">PGP Key</a>]</li>
+      </ul>
+      <header>Obligatory disclaimer</header>
+      <p>I do not speak on behalf of my employer, nor I am authorized to represent it publicly.
+    As such, all and any opinion expressed in this site is solely mine and do not represent my employer's point-of-view.</p>
+      <div id="toc-placeholder"></div>
+
+      <nav id="toc">
+        <header>Table of Contents</header>
+        <ul>
+        </ul>
+      </nav>
+
+    </aside>
+
+    <script src="{{ '/static/js/site.js' | cachekey }}" type="text/javascript" async></script>
+  </body>
+</html>

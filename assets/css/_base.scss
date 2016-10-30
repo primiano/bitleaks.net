@@ -1,0 +1,159 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+}
+
+#bar {
+  position: absolute;
+  box-sizing: border-box;
+  right: 0;
+  top: 0;
+  width: $sidebar-w;
+  min-height: 100%;
+  background: $primary-color;
+  box-shadow: -1px 0 30px #999;
+  padding-top: 130px;
+  color: $primary-text-color;
+
+  @media #{$tablet-layout} {
+    position: static;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  header {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1.5em;
+    text-align: left;
+    background: $primary-dark-color;
+    color: $primary-dark-text-color;
+    margin: 0 0 10px;
+    padding: 20px 20px;
+    @media #{$tablet-layout} {
+      display: none;
+    }
+  }
+
+
+  p {
+    margin: 10px 20px;
+    line-height: 1.5;
+
+    @media #{$tablet-layout} {
+      font-size: 18px;
+    }
+  }
+}
+
+#header {
+  display: block;
+  position: absolute;
+  width: $sidebar-w;
+  left: auto;
+  top: 0;
+  right: 0;
+  background-color: $primary-color;
+  text-decoration: none;
+  text-align: center;
+
+  img {
+    display: block;
+    width: $logo-w;
+    margin: 20px auto;
+  }
+
+  #tagline {
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px;
+    color: $primary-text-color;
+  }
+
+  @media #{$tablet-layout} {
+    left: 0;
+    width: 100%;
+    height: $topbar-h;
+    text-align: left;
+    box-shadow: 0px 1px 30px #999;
+
+    img {
+      margin-left: 10px;
+    }
+
+    #tagline {
+      position: absolute;
+      top: 0;
+      width: auto;
+      right: 10px;
+      text-align: right;
+      line-height: $topbar-h;
+    }
+  }
+
+  @media #{$phone-layout} {
+    height: $topbar-h-phone;
+
+    img {
+      margin: 8px auto;
+    }
+
+    #tagline {
+      display: none;
+    }
+  }
+
+}
+
+#profile_picture {
+  margin: 20px auto;
+  display: block;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+
+#links {
+  display: block;
+  background: $primary-light-color;
+  margin: 20px 0 0 0;
+  padding: 10px 20px;
+  font-family: 'Consolas', monospace;
+  line-height: 2;
+
+  li {
+    list-style-position: inside;
+    a {
+      color: $primary-light-text-color;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  li.home { list-style-image: inline-image('home.png'); }
+  li.github { list-style-image: inline-image('github.png'); }
+  li.photography { list-style-image: inline-image('photography.png'); }
+  li.email { list-style-image: inline-image('email.png'); }
+}
+
+#content {
+  margin: 0 $sidebar-w 0 0;
+  @media #{$tablet-layout} {
+    margin: $topbar-h 0 10px;
+  }
+  @media #{$phone-layout} {
+    margin-top: $topbar-h-phone;
+  }
+
+}
+
+#toc {
+  display: none;
+}

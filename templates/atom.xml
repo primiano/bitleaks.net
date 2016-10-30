@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <link href="https://www.bitleaks.net/atom.xml" rel="self" type="application/atom+xml" />
+    <author>
+      <name>Primiano Tucci</name>
+    </author>
+    <title>BitLeaks.net</title>
+    <link href="https://www.bitleaks.net/"/>
+    <id>https://www.bitleaks.net/</id>
+    <updated>{{ rfc3339time }}</updated>
+    {% for item in index_json %}
+
+    <entry>
+        <title>{{ item.title }}</title>
+        <link href="https://www.bitleaks.net/blog/{{item.post_id}}/"/>
+        <id>https://www.bitleaks.net/blog/{{item.post_id}}/</id>
+        <updated>{{ strftime("%Y-%m-%dT00:00:00Z", strptime(item.date)) }}</updated>
+        <summary>{{ item.abstract }}</summary>
+    </entry>
+    {%endfor%}
+
+</feed>

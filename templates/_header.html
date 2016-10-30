@@ -1,0 +1,34 @@
+{% set canonical_url = 'https://www.bitleaks.net' %}
+{% macro get_tagline() %}
+{% include 'templates/_fulltitle.html' %}
+{% endmacro %}
+<!doctype html>
+<html lang="en-us" itemscope itemtype="http://schema.org/Blog">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% include 'templates/_fulltitle.html' %}</title>
+    <link rel="canonical" href="https://www.bitleaks.net{{ canonical_path }}">
+    <link href="{{ '/static/images/favicon.ico' | cachekey }}" rel="shortcut icon" type="image/x-icon">
+    <link href="{{ '/static/css/home.css' | cachekey }}" rel="stylesheet" type="text/css">
+{% if title %}
+    <link href="{{ '/static/css/blogpost.css' | cachekey }}" rel="stylesheet" type="text/css">
+{% endif %}
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="BitLeaks Atom Feed" />
+    <meta itemprop="name" content="{% include 'templates/_fulltitle.html' %}">
+    <meta itemprop="description" content="{{ abstract or get_tagline() }}">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{% include 'templates/_fulltitle.html' %}">
+    <meta property="og:description" content="{{ abstract or get_tagline() }}">
+{% if icon %}
+    <meta property="og:image" content="{{canonical_url}}{{ ('/static/blog/' + post_id + '/' + icon) | cachekey }}">
+{% endif %}
+  </head>
+  <body>
+    <script type="text/javascript">
+    <!--
+      'article aside footer header nav figure figcaption section time'.replace(/\w+/g,function(n){document.createElement(n)})
+    -->
+    </script>
+
+    <div id="content">

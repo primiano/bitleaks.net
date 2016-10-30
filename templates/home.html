@@ -1,0 +1,40 @@
+{% include 'templates/_header.html' %}
+{% set tags = [('coding', 'Coding'), ('git', 'Git'), ('electronics', 'Electronics'), ('android', 'Android')] %}
+
+      <div id="tags">
+        <h1>Tags</h1>
+        <ul>
+{% for tag,tagtitle in tags %}
+          <li class="{% if tag==cur_tag %} active{% elif cur_tag and tag!=cur_tag %} grayed{% endif %}">
+            <a href="{% if tag==cur_tag %}/{% else %}/blog/tags/{{tag}}/{% endif %}">
+              <div class="{{tag}}"
+                   style="background-image: url('{{('/static/images/tag-' + tag + '.png')|cachekey}}')"></div>
+             <span>{{tagtitle}}</span>
+            </a>
+          </li>
+{% endfor %}
+        </ul>
+      </div>
+
+      <main id="posts">
+{% if cur_tag %}<h1>Tag: {{dict(tags)[cur_tag]}}</h1>{% endif %}
+{%   for item in index_json %}
+{%     if not cur_tag or cur_tag in item.tags %}
+        <a href="/blog/{{ item.post_id }}/">
+          <article>
+            <h2>{{ item.title }}</h2>
+            <p>{{ item.abstract }}</p>
+            <div class="time">
+              <div class="date">{{ strftime("%d/%b", strptime(item.date)) }}</div>
+              <div class="year">{{ strptime(item.date).tm_year }}</div>
+            </div>
+{%     if item.icon %}
+            <figure style="background-image: url({{ ('/static/blog/' + item.post_id + '/' + item.icon) | cachekey }})"></figure>
+{%     endif %}
+          </article>
+        </a>
+{%   endif %}
+{% endfor %}
+        <footer><a href="/atom.xml" rel="alternate" type="application/atom+xml">Atom feed</a></footer>
+      </main>
+{% include 'templates/_footer.html' %}

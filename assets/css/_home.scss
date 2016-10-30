@@ -1,0 +1,246 @@
+$datime-width: 80px;
+
+#tags {
+  position: relative;
+  background: #F2F2F2;
+  box-sizing: border-box;
+  padding: 10px 10px 0;
+  width: 100%;
+  text-align: center;
+  -webkit-user-select: none;
+
+  h1 {
+    font-size: 2.5em;
+    font-weight: 200;
+    font-family: 'Roboto Slab';
+    transform: rotate(-90deg);
+    position: absolute;
+    margin: auto;
+    color: #ddd;
+    height: 100px;
+    left: 10px;
+
+    @media #{$phone-layout} {
+      display: none;
+    }
+  }
+
+  li {
+    display: inline-block;
+    position: relative;
+    margin: 0 40px 12px;
+
+    a {
+      @include no-tap-highlight;
+      color: #999;
+      text-decoration: none;
+    }
+
+    div {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, webkit-filter 0.3s ease, opacity 0.3s ease;
+      background-color: #333;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0 auto 10px;
+
+      &.git {
+        background-color: #EF5350;
+      }
+
+      &.coding {
+        background-color: #64B5F6;
+      }
+
+      &.electronics {
+        background-color: #8D6E63;
+      }
+
+      &.android {
+        background-color: #66BB6A;
+      }
+    }
+
+    &.grayed div {
+      opacity: 0.6;
+      -webkit-filter: grayscale(0.8);
+    }
+
+    &.active div {
+      opacity: 1;
+      -webkit-filter: none;
+      font-weight: 400;
+      color: #222;
+    }
+
+    &:hover div {
+      opacity: 1;
+      -webkit-filter: none;
+      box-shadow: 5px 5px 20px #999;
+      transform: scale(1.05);
+    }
+
+    span {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 300;
+      text-align: center;
+    }
+
+    @media #{$tablet-layout} {
+      margin: 0 20px 10px;
+    }
+
+    @media #{$phone-layout} {
+      margin: 0 15px 10px;
+      &:first-of-type { margin-left: 0; }
+      &:last-of-type { margin-right: 0; }
+
+      div {
+        width: 48px;
+        height: 48px;
+        background-size: 32px;
+      }
+      span {
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+    }
+
+    @media #{$phone-narrow-layout} {
+      margin: 0 10px 10px;
+    }
+  }
+}
+
+#posts {
+  padding: 20px;
+  @media #{$phone-layout} {
+    padding: 10px;
+  }
+
+  h1 {
+    font-family: 'Roboto Condensed';
+    font-size: 1.25em;
+    font-weight: 200;
+    text-align: left;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    color: $text-light-color;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a:visited {
+    color: $link-visited-color;
+  }
+
+  article {
+    display: block;
+    position: relative;
+    margin: 20px 0 40px;
+    padding-left: $datime-width + 20px;
+
+    @media #{$phone-layout} {
+      min-height: 0;
+    }
+
+    * {
+      transition: color 0.5s, opacity 0.5s ease;
+    }
+
+    figure {
+      display: block;
+      position: absolute;
+      left: 5px;
+      top: 40px;
+      bottom: 0;
+      width: $datime-width;
+      background-repeat: no-repeat;
+      background-position: right;
+      background-size: contain;
+      opacity: 0;
+
+      @media #{$phone-layout} {
+        display: none;
+      }
+    }
+
+    .time {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: $datime-width;
+      height: 100%;
+      text-align: right;
+      margin-top: 0.25em;
+
+      .date {
+        text-transform: uppercase;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        color: #FF9800;
+      }
+
+      .year {
+        font-family: 'Roboto Condensed', sans-serif;
+        color: $text-light-color;
+      }
+
+    }
+
+    h2 {
+      display: block;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 24px;
+      line-height: 1.25;
+      @media #{$phone-layout} {
+        font-size: 20px;
+      }
+    }
+
+    p {
+      display: block;
+      margin-top: 10px;
+      line-height: 1.5;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      color: $text-light-color;
+
+      @media #{$phone-layout} {
+        display: none;
+      }
+    }
+
+    &:hover {
+      p {
+        color: #333;
+      }
+
+      figure {
+        opacity: 0.8;
+      }
+
+      .time .date {
+        color: #FF9800;
+      }
+    }
+  }
+
+  > footer {
+    text-align: center;
+    color: $text-light-color;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}

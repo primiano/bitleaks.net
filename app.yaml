@@ -1,0 +1,53 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+automatic_scaling:
+  max_concurrent_requests: 80
+  max_idle_instances: 1
+  min_pending_latency: "2000ms"
+  max_pending_latency: "3000ms"
+  min_idle_instances: 0
+handlers:
+- url: /
+  static_files: htdocs/index.html
+  upload: htdocs/index.html
+  secure: always
+  redirect_http_response_code: 301
+- url: /robots.txt
+  static_files: htdocs/robots-allow.txt
+  upload: htdocs/robots-allow.txt
+- url: /([^/]+)
+  static_files: htdocs/\1
+  upload: htdocs/[^/]+
+  secure: always
+  redirect_http_response_code: 301
+- url: /blog/(.*)/$
+  static_files: htdocs/blog/\1/index.html
+  upload: htdocs/blog/.*
+  secure: always
+  redirect_http_response_code: 301
+- url: /blog/
+  static_dir: htdocs/blog/
+  secure: always
+  redirect_http_response_code: 301
+- url: /static/
+  static_dir: htdocs/static/
+  secure: always
+  redirect_http_response_code: 301
+  expiration: "30d"
+- url: /.well-known/acme-challenge/.+
+  script: handlers.letsencrypt.app
+- url: /.well-known/acme-response/.+
+  script: handlers.letsencrypt.app
+  login: admin
+
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?\.mkdir
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^.git/.*
+- ^(assets|templates|blogposts|handlers|Makefile|\w+\.\w+.)

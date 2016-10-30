@@ -1,0 +1,20 @@
+{% include 'templates/_header.html' %}
+
+      <main>
+        <article id="post">
+          <header>
+            <h1>{{ title }}</h1>
+            <span class="datetime">{{ strftime("%B %d, %Y", strptime(date)) }}</span>
+            <a href="#comments">Comments &darr;</a>
+          </header>
+          {{ markdown_output | safe }}
+          <aside>
+            <h2 id="comments">Comments</h2>
+            <div id="disqus_thread">
+              <a href="javascript:loadDisqus();">Click here to load comments</a>
+            </div>
+          </aside>
+        </article>
+      </main>
+
+{% include 'templates/_footer.html' %}
